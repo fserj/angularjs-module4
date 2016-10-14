@@ -15,7 +15,7 @@ function MenuDataService($http) {
   service.getAllCategories = function () {
     console.log("getAllCategories called");
     return  $http
-      .get("http://davids-restaurant.herokuapp.com/categories.json")
+      .get("https://davids-restaurant.herokuapp.com/categories.json")
       .then(function (result){
           return result.data;
       });
