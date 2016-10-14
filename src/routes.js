@@ -31,9 +31,21 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
   })
 
   .state('items', {
-    url: '/items/{categoryShortName}',
+    url: '/items/',
+    params:{
+      categoryShortName : null,
+      categoryName : null
+    },
     templateUrl: 'src/templates/main-items.template.html',
-    controller: "ItemsListController as itemsList"
+    controller: "ItemsListController as itemsList",
+    resolve: {
+      items: ['MenuDataService','$stateParams', function (MenuDataService,$stateParams) {
+        return MenuDataService.getItemsForCategory($stateParams.categoryShortName);
+      }],
+      categoryName: ['$stateParams', function($stateParams){
+        return $stateParams.categoryName;
+      }]
+    }
   });
 
 }
