@@ -8,13 +8,21 @@ angular.module('MenuApp')
 ItemsListController.$inject = ['MenuDataService', '$stateParams'];
 function ItemsListController(MenuDataService, $stateParams) {
   var mainList = this;
+  mainList.items = [];
 
   console.log("item controller created with "+$stateParams.categoryShortName);
   var promise =MenuDataService.getItemsForCategory($stateParams.categoryShortName);
-  // for(var i=0;i<items.length;i++){
-  //   var obj = items[i];
-  //   console.log(i+". "+obj.name+" url:"+obj.url);
-  // }
+  promise.then(function (result){
+      mainList.items = result.menu_items;
+        mainList.categoryName = result.category.name;
+        //console.log(mainList.categoryName);
+
+        // for(var i=0;i<mainList.items.length;i++){
+        //   var obj = mainList.items[i];
+        //   console.log(i+". "+obj.name);
+        // }
+    });
+
 }
 
 })();

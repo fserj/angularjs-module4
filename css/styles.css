@@ -16,6 +16,8 @@ body {
 
 li[ui-sref]:hover {
   cursor: pointer;
+  text-decoration: underline;
+  color: blue;
   /*display: inline-block;
   border: solid black 1px;
   padding-left: 5px;

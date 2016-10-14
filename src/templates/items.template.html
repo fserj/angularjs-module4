@@ -1,6 +1,13 @@
 <a ui-sref="home">Home</a> &lt;
-<a ui-sref="categories">Categories</a> 
-
+<a ui-sref="categories">Categories</a>  &lt;
+{{$ctrl.category}}
 <br><br>
 
-LIST OF ITEMS<br>
+
+<ul>
+  <li ng-repeat="item in $ctrl.items">
+    {{ item.name }}<br>Description: {{item.description}}<br>
+    <div ng-if="item.price_large">Large: ${{item.price_large}}<br></div>
+    <div ng-if="item.price_small">Small: ${{item.price_small}}</div>
+  </li>
+</ul>
